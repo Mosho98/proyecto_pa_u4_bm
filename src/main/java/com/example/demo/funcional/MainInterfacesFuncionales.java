@@ -1,5 +1,9 @@
 package com.example.demo.funcional;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +36,27 @@ public class MainInterfacesFuncionales {
 		IPersonaSupplier<Persona> supplier5 = new PersonaSupplier2Impl();
 		LOG.info("Supplier Lambda: " + supplier5.getNombre());
 		
+		//JAVA
+		LOG.info("JAVA Supplier");
+		Stream<String> lista = Stream.generate(() -> {
+			
+			return "Bryan 2";
+			}).limit(10);
+		lista.forEach(cadena-> LOG.info(cadena));
+		System.out.println("-------------------------------------------------------");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//2.CONSUMER
 				LOG.info("2. CONSUMER");
 				
@@ -56,6 +81,27 @@ public class MainInterfacesFuncionales {
 				};
 				consumer3.accept(Integer.valueOf(5), Integer.valueOf(10));
 				
+				//JAVA
+				LOG.info("JAVA Consummer");
+				List<Integer> listaNumeros = Arrays.asList(1,2,3,4,5,56,78);
+				listaNumeros.forEach(numero -> LOG.info("valor: " + numero));
+				System.out.println("-------------------------------------------------------");
+//				for(Integer val: listaNumeros) {
+//					LOG.info("valor: " + val);
+//				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				//3.PREDICATE
 				LOG.info("3. PREDICATE");
 				
@@ -72,6 +118,22 @@ public class MainInterfacesFuncionales {
 					}
 				};
 				LOG.info("Predicate2: " + predicate2.evaluar(Integer.valueOf(11)));
+				
+				//JAVA
+				LOG.info("JAVA Predicate");
+				Stream<Integer> listaFiltrada = listaNumeros.stream().filter(numero -> numero >= 3);			
+				listaFiltrada.forEach(numero -> LOG.info("Valor: " + numero));
+				System.out.println("-------------------------------------------------------");
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				//4.FUNCTION
 				LOG.info("4. FUNCTION");
@@ -96,6 +158,41 @@ public class MainInterfacesFuncionales {
 				Ciudadano ciudadanoConvertido = function2.aplicar(per1);
 				LOG.info("Ciudadano convertido: " + ciudadanoConvertido);
 				
+				
+				//JAVA
+				LOG.info("JAVA FUNCTION");
+				Stream<String> listaCambiada = listaNumeros.stream().map(numeroLista -> {
+					Integer valorFinal = numeroLista+1;
+					String cadena = "num: " + valorFinal.toString();
+					return cadena;
+				});
+				listaCambiada.forEach(cadena -> LOG.info(cadena));
+				System.out.println();
+				
+				System.out.println("UN UNARYOPERATOR MEDIANTE UN FUNCTION-------------------------");
+				LOG.info("JAVA FUNCTION");
+				Stream<Integer> listaCambiada2 = listaNumeros.stream().map(numeroLista -> {
+					Integer valorFinal = numeroLista+1;
+				
+					return valorFinal;
+				});
+				listaCambiada2.forEach(numero -> LOG.info("Valor entero: " + numero));
+				System.out.println("-------------------------------------------------------");
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				//5. UNARY OPERATOR
 				LOG.info("5. UNARYOPERATOR");
 				IPersonaUnaryOperator<String> unaryOperator = cadena -> {
@@ -103,7 +200,7 @@ public class MainInterfacesFuncionales {
 					return cadenaFinal;
 				};
 				LOG.info("UnaryOperator: " + unaryOperator.aplicar("Bryan"));
-				
+				System.out.println("-------------------------------------------------------");
 	}
 
 }
