@@ -1,5 +1,7 @@
 package com.example.demo.modelo;
 
+import java.time.Period;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,23 +9,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-@Entity
-@Table(name = "estudiante_p")
 
+@Entity
+@Table(name="estudiante_p")
 public class Estudiante {
+	
 	@Id
-	// name = cualquier o el nombre de la secuencia
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_estu")
-	@SequenceGenerator(name = "seq_estu", sequenceName = "seq_estu", allocationSize = 1)
-	@Column(name = "estu_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_estu")
+	@SequenceGenerator(name="seq_estu",sequenceName = "seq_estu", allocationSize = 1)
+	@Column(name="estu_id")
 	private Integer id;
 	
-	@Column(name = "estu_nombre_completo")
-	private Integer nombreCompleto;
+	@Column(name="estu_nombre_completo")
+	private String nombreCompleto;
 	
-	@Column(name = "estu_edad")
-	private Integer edad;
+	@Column(name="estu_edad")
+	private int edad;
 
+	
+	//SET Y GET
 	public Integer getId() {
 		return id;
 	}
@@ -32,20 +36,20 @@ public class Estudiante {
 		this.id = id;
 	}
 
-	public Integer getNombreCompleto() {
+	public String getNombreCompleto() {
 		return nombreCompleto;
 	}
 
-	public void setNombreCompleto(Integer nombreCompleto) {
+	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
 
-	public Integer getEdad() {
+	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(Integer edad) {
-		this.edad = edad;
+	public void setEdad(int edadfinal) {
+		this.edad = edadfinal;
 	}
 
 	@Override
@@ -54,6 +58,5 @@ public class Estudiante {
 	}
 	
 	
-	
-	
+
 }

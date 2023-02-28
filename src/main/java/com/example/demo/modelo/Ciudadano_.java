@@ -7,35 +7,38 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "ciudadano_p")
-public class Ciudadano {
+@Table(name="ciudadano_p")
+
+public class Ciudadano_ {
 	
 	@Id
-	// name = cualquier o el nombre de la secuencia
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_ciud")
-	@SequenceGenerator(name = "seq_ciud", sequenceName = "seq_ciud", allocationSize = 1)
-	@Column(name = "ciud_id")
-	private Integer Id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_ciud")
+	@SequenceGenerator(name="seq_ciud",sequenceName = "seq_ciud", allocationSize = 1)
+	@Column(name="ciud_id")
+	private Integer id;
 	
-	@Column(name = "ciud_nombre")
+	@Column(name="ciud_nombre")
 	private String nombre;
 	
-	@Column(name = "ciud_apellido")
+	@Column(name="ciud_apellido")
 	private String apellido;
 	
-	@Column(name = "ciud_fecha_naciemiento")
+	@Column(name="ciud_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
+	
+	//GET Y SET
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -58,15 +61,16 @@ public class Ciudadano {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFechaNacimiento(LocalDateTime localDateTime) {
+		this.fechaNacimiento = localDateTime;
 	}
 
 	@Override
 	public String toString() {
-		return "Ciudadano [Id=" + Id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento="
+		return "Ciudadano_ [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento="
 				+ fechaNacimiento + "]";
 	}
+
 	
 	
 	
